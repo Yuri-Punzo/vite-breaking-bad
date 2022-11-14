@@ -5,7 +5,9 @@ Create un nuovo progetto utilizzando Vite e Vue 3 e definite i componenti necess
 Bonus:
 Creare un componente loader da visualizzare fintantoché i risultati non sono pronti. -->
 <script>
-import SiteHeader from './components/SiteHeader.vue';
+import axios from "axios"
+import { store } from "./store"
+import SiteHeader from "./components/SiteHeader.vue";
 import SiteMain from "./components/SiteMain.vue"
 
 export default {
@@ -13,6 +15,26 @@ export default {
   components: {
     SiteHeader,
     SiteMain
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  methods: {
+    callApi(url) {
+      axios.get(url)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.error(error.message);
+          this.error = error.message
+        })
+    }
+  },
+  mounted() {
+    this.callApi(this.store)
   }
 }
 

@@ -16,9 +16,9 @@ export default {
                 Select Category
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Alive</a></li>
+                <li><a class="dropdown-item" href="#">Deceased</a></li>
+                <li><a class="dropdown-item" href="#">Presumed Dead</a></li>
             </ul>
         </div>
         <!-- /dropdown btn -->
