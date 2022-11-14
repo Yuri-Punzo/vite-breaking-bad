@@ -18,7 +18,7 @@ export default {
     <div class="col mb-5" v-for="character in store.characters">
         <div class="my_card">
             <div class="my_card-body text-center">
-                <img :src="character.img" alt="Name">
+                <img :src="character.img" :alt="`${character.name} image missing`">
                 <h5 class="card_title">{{ character.name.toUpperCase() }}</h5>
                 <div class="card_text">{{ character.category }}</div>
                 <div class="card_text">{{ character.status }}</div>

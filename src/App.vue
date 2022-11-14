@@ -6,9 +6,9 @@ Bonus:
 Creare un componente loader da visualizzare fintantoché i risultati non sono pronti. -->
 <script>
 import axios from "axios"
-import { store } from "./store"
 import SiteHeader from "./components/SiteHeader.vue";
 import SiteMain from "./components/SiteMain.vue"
+import { store } from "./store"
 
 export default {
   name: "App",
@@ -27,8 +27,8 @@ export default {
         .then(response => {
           console.log(response);
           console.log(response.data);
-          console.log(response.data[0]);
           this.store.characters = response.data
+          this.store.charactersLength = response.data.length
         })
         .catch(error => {
           console.error(error.message);
