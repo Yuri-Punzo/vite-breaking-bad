@@ -1,10 +1,11 @@
 <script>
-import BreakingBadCastList from "./BreakingBadCastList.vue"
+import BreakingBadCastCards from "./BreakingBadCastCards.vue"
+/* import { store } from "../store" */
 
 export default {
     name: "SiteMain",
     components: {
-        BreakingBadCastList
+        BreakingBadCastCards
     }
 }
 </script>
@@ -22,11 +23,16 @@ export default {
             </ul>
         </div>
         <!-- /dropdown btn -->
+    </div>
+    <div class="container">
         <section class="cast">
-            <p>Found 62 characters</p>
+            <p>Found {{ }} characters</p>
+            <div class="row">
 
+                <BreakingBadCastCards />
+
+            </div>
         </section>
-        <BreakingBadCastList />
     </div>
 </template>
 

@@ -26,6 +26,10 @@ export default {
       axios.get(url)
         .then(response => {
           console.log(response);
+          console.log(response.data);
+          console.log(response.data[0]);
+          /* this.store.characters = response.data */
+          /* this.store.info = response.data.info */
         })
         .catch(error => {
           console.error(error.message);
@@ -34,7 +38,7 @@ export default {
     }
   },
   mounted() {
-    this.callApi(this.store)
+    this.callApi(this.store.API_URL)
   }
 }
 
