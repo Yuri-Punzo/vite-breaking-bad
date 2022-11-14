@@ -28,8 +28,7 @@ export default {
           console.log(response);
           console.log(response.data);
           console.log(response.data[0]);
-          /* this.store.characters = response.data */
-          /* this.store.info = response.data.info */
+          this.store.characters = response.data
         })
         .catch(error => {
           console.error(error.message);

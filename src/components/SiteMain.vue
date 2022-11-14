@@ -27,7 +27,7 @@ export default {
     <div class="container">
         <section class="cast">
             <p>Found {{ }} characters</p>
-            <div class="row">
+            <div class="row row-cols-1 row-cols-xl-5">
 
                 <BreakingBadCastCards />
 
