@@ -1,11 +1,16 @@
 <script>
 import BreakingBadCastCards from "./BreakingBadCastCards.vue"
-/* import { store } from "../store" */
+import { store } from "../store"
 
 export default {
     name: "SiteMain",
     components: {
         BreakingBadCastCards
+    },
+    data() {
+        return {
+            store
+        }
     }
 }
 </script>
@@ -17,22 +22,30 @@ export default {
                 Select Category
             </button>
             <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All</a></li>
                 <li><a class="dropdown-item" href="#">Alive</a></li>
                 <li><a class="dropdown-item" href="#">Deceased</a></li>
                 <li><a class="dropdown-item" href="#">Presumed Dead</a></li>
+                <li><a class="dropdown-item" href="#">Unknown</a></li>
             </ul>
         </div>
         <!-- /dropdown btn -->
     </div>
     <div class="container">
         <section class="cast">
-            <p>Found {{ }} characters</p>
+            <!-- <section class="cast" v-if="store.characters.length === 62"> -->
+            <p>Found
+                <!--{{ store.characters.length }}-->characters
+            </p>
             <div class="row row-cols-1 row-cols-xl-5">
 
                 <BreakingBadCastCards />
 
             </div>
         </section>
+        <!-- <div v-else>
+            <h1 class="text-center">...LOADING...</h1>
+        </div> -->
     </div>
 </template>
 
