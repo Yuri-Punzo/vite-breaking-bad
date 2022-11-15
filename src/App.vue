@@ -29,6 +29,8 @@ export default {
           console.log(response.data);
           this.store.characters = response.data
           this.store.charactersLength = response.data.length
+          //this.store.loading = false
+          //questo mi permette di usare loading nel v-if del site main
         })
         .catch(error => {
           console.error(error.message);
