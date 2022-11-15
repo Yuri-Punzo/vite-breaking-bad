@@ -14,26 +14,17 @@ export default {
     }
 }
 </script>
-
+<!--  -->
 <template>
     <div class="container">
-        <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Category
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">All</a></li>
-                <li><a class="dropdown-item" href="#">Alive</a></li>
-                <li><a class="dropdown-item" href="#">Deceased</a></li>
-                <li><a class="dropdown-item" href="#">Presumed Dead</a></li>
-                <li><a class="dropdown-item" href="#">Unknown</a></li>
-            </ul>
-        </div>
-        <!-- /dropdown btn -->
+        <select class="series_selection" v-model="store.selectSeries" @change="$emit('selectSeries')">
+            <option value="" selected hidden>{{ store.selectSeries }}</option>
+            <option value="Breaking Bad">Breaking Bad</option>
+            <option value="Better Call Saul">Better Call Saul</option>
+        </select>
     </div>
     <div class="container">
-        <!-- <section class="cast"> -->
-        <section class="cast" v-if="store.charactersLength === 62">
+        <section class="cast" v-if="this.store.loading == false">
             <p>Found {{ store.charactersLength }} characters</p>
             <div class="row row-cols-1 row-cols-xl-5">
 
@@ -49,7 +40,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.dropdown {
+.series_selection {
     margin: 0 0 1.5rem 1rem;
 }
 

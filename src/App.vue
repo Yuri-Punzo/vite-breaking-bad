@@ -22,24 +22,29 @@ export default {
     }
   },
   methods: {
+    selectSeries() {
+      console.log("changed");
+    },
     callApi(url) {
       axios.get(url)
         .then(response => {
-          console.log(response);
-          console.log(response.data);
+          //console.log(response);
+          //console.log(response.data);
           this.store.characters = response.data
           this.store.charactersLength = response.data.length
-          //this.store.loading = false
-          //questo mi permette di usare loading nel v-if del site main
+          this.store.loading = false
         })
         .catch(error => {
-          console.error(error.message);
+          //console.error(error.message);
           this.error = error.message
         })
     }
   },
   mounted() {
     this.callApi(this.store.API_URL)
+  },
+  computed: {
+
   }
 }
 
