@@ -1,11 +1,24 @@
 import { reactive } from "vue";
+import axios from "axios";
 
 export const store = reactive({
     API_URL: "https://www.breakingbadapi.com/api/characters",
-    BreakingBad_API_URL: "https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul",
-    BetterCallSaul_API_URL: "https://www.breakingbadapi.com/api/characters?category=Breaking+Bad",
     characters: null,
     error: null,
     loading: true,
-    selectSeries: "Select Series"
-})
+    selectSeries: "Select Series",
+    callApi: (url) => {
+        axios.get(url)
+            .then(response => {
+                //console.log(response);
+                //console.log(response.data);
+                store.characters = response.data
+                store.charactersLength = response.data.length
+                store.loading = false
+            })
+            .catch(error => {
+                console.error(error.message);
+                error = error.message
+            })
+    }
+});

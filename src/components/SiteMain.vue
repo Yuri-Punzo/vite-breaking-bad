@@ -1,5 +1,4 @@
 <script>
-import axios from "axios"
 import BreakingBadCastCards from "./BreakingBadCastCards.vue"
 import SelectSeries from "./SelectSeries.vue"
 import { store } from "../store"
@@ -18,22 +17,14 @@ export default {
     methods: {
         changeSelectedSeries() {
             //console.log("changed");
-            let seriesUrl = this.store.API_URL;
-            //console.log(seriesUrl);
+            let url = this.store.API_URL;
+            //console.log(url);
             if (this.store.selectSeries !== 'All') {
                 const selectSeries = this.store.selectSeries
                 //console.log(this.store.selectSeries);
-                seriesUrl = `${this.store.API_URL}?category=${selectSeries}`
+                url = `${this.store.API_URL}?category=${selectSeries}`
             }
-            axios.get(seriesUrl)
-                .then(response => {
-                    //console.log(response)
-                    this.store.characters = response.data
-                    this.store.charactersLength = response.data.length
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+            store.callApi(url)
         },
     }
 }
