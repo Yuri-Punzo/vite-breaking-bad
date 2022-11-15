@@ -1,4 +1,5 @@
 <script>
+import axios from "axios"
 import BreakingBadCastCards from "./BreakingBadCastCards.vue"
 import SelectSeries from "./SelectSeries.vue"
 import { store } from "../store"
