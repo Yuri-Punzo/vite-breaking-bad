@@ -22,9 +22,6 @@ export default {
     }
   },
   methods: {
-    selectSeries() {
-      console.log("changed");
-    },
     callApi(url) {
       axios.get(url)
         .then(response => {
@@ -42,9 +39,6 @@ export default {
   },
   mounted() {
     this.callApi(this.store.API_URL)
-  },
-  computed: {
-
   }
 }
 

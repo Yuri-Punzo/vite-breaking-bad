@@ -1,28 +1,46 @@
 <script>
 import BreakingBadCastCards from "./BreakingBadCastCards.vue"
+import SelectSeries from "./SelectSeries.vue"
 import { store } from "../store"
 
 export default {
     name: "SiteMain",
     components: {
-        BreakingBadCastCards
+        BreakingBadCastCards,
+        SelectSeries
     },
     data() {
         return {
             store
         }
+    },
+    methods: {
+        changeSelectedSeries() {
+            //console.log("changed");
+            let seriesUrl = this.store.API_URL;
+            //console.log(seriesUrl);
+            if (this.store.selectSeries !== 'All') {
+                const selectSeries = this.store.selectSeries
+                //console.log(this.store.selectSeries);
+                seriesUrl = `${this.store.API_URL}?category=${selectSeries}`
+            }
+            axios.get(seriesUrl)
+                .then(response => {
+                    //console.log(response)
+                    this.store.characters = response.data
+                    this.store.charactersLength = response.data.length
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
     }
 }
 </script>
 <!--  -->
 <template>
-    <div class="container">
-        <select class="series_selection" v-model="store.selectSeries" @change="$emit('selectSeries')">
-            <option value="" selected hidden>{{ store.selectSeries }}</option>
-            <option value="Breaking Bad">Breaking Bad</option>
-            <option value="Better Call Saul">Better Call Saul</option>
-        </select>
-    </div>
+    <SelectSeries @selectSeries="changeSelectedSeries" />
+
     <div class="container">
         <section class="cast" v-if="this.store.loading == false">
             <p>Found {{ store.charactersLength }} characters</p>
@@ -40,10 +58,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.series_selection {
-    margin: 0 0 1.5rem 1rem;
-}
-
 .cast {
     background-color: white;
     padding: 2rem;
